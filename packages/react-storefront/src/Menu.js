@@ -48,7 +48,8 @@ export const styles = theme => ({
   },
 
   icon: {
-    marginRight: '0'
+    marginRight: '0',
+    width: 24
   },
 
   headerText: {
@@ -62,6 +63,14 @@ export const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     transition: 'all ease-out .2s'
+  },
+
+  hidden: {
+    display: 'none'
+  },
+
+  visible: {
+    display: 'block'
   },
 
   listItem: {
@@ -235,7 +244,11 @@ export default class Menu extends Component {
     if (!menu) {
       return null
     } else if (amp) {
-      return <AmpMenu {...this.props} />
+      return (
+        <MenuContext.Provider value={this.menuContext}>
+          <AmpMenu {...this.props} />
+        </MenuContext.Provider>
+      )
     }
 
     return (
