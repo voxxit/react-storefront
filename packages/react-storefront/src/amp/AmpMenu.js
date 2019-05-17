@@ -50,7 +50,7 @@ export const styles = theme => ({
 @withTheme()
 @withStyles(styles, { name: 'RSFAmpMenu' })
 @inject(({ app }) => ({ menu: app.menu }))
-export default class AmpMenu2 extends Component {
+export default class AmpMenu extends Component {
   static defaultProps = {
     id: 'moov_menu'
   }

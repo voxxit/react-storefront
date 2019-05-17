@@ -3,6 +3,7 @@
  * Copyright © 2017-2018 Moov Corporation.  All rights reserved.
  */
 import React, { PureComponent } from 'react'
+import { observer, inject } from 'mobx-react'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import OpenWithLabel from './icons/OpenWithLabel'
 import Open from '@material-ui/icons/Menu'
@@ -41,6 +42,14 @@ export const styles = theme => ({
     }
   },
 
+  hidden: {
+    display: 'none'
+  },
+
+  visible: {
+    display: 'block'
+  },
+
   icon: {
     color: theme.palette.action.active,
     position: 'absolute',
@@ -52,6 +61,8 @@ export const styles = theme => ({
 /**
  * A menu icon that animates transitions between open and closed states.
  */
+@inject('app')
+@observer
 @withStyles(styles, { name: 'RSFMenuIcon' })
 export default class MenuIcon extends PureComponent {
   static propTypes = {
@@ -97,8 +108,31 @@ export default class MenuIcon extends PureComponent {
   }
 
   render() {
-    const { open, classes } = this.props
+    const {
+      open,
+      classes,
+      app: { amp }
+    } = this.props
     const { OpenIcon, CloseIcon } = this.state
+
+    if (amp) {
+      return (
+        <div className={classes.root}>
+          <OpenIcon
+            className={classes.icon}
+            amp-bind={`class=>menuOpen == false ? '${classes.visible} ${classes.icon}' : '${
+              classes.hidden
+            } ${classes.icon}'`}
+          />
+          <CloseIcon
+            className={`${classes.icon} ${classes.hidden}`}
+            amp-bind={`class=>menuOpen == true ? '${classes.visible} ${classes.icon}' : '${
+              classes.hidden
+            } ${classes.icon}'`}
+          />
+        </div>
+      )
+    }
 
     return (
       <div className={classes.root}>
