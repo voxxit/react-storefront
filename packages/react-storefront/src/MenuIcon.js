@@ -118,18 +118,15 @@ export default class MenuIcon extends PureComponent {
     if (amp) {
       return (
         <div className={classes.root}>
-          <OpenIcon
-            className={classes.icon}
-            amp-bind={`class=>menuOpen == false ? '${classes.visible} ${classes.icon}' : '${
-              classes.hidden
-            } ${classes.icon}'`}
-          />
-          <CloseIcon
-            className={`${classes.icon} ${classes.hidden}`}
-            amp-bind={`class=>menuOpen == true ? '${classes.visible} ${classes.icon}' : '${
-              classes.hidden
-            } ${classes.icon}'`}
-          />
+          <div amp-bind={`class=>menuOpen == false ? '${classes.visible}' : '${classes.hidden}'`}>
+            <OpenIcon className={classes.icon} />
+          </div>
+          <div
+            className={classes.hidden}
+            amp-bind={`class=>menuOpen == true ? '${classes.visible}' : '${classes.hidden}'`}
+          >
+            <CloseIcon className={classes.icon} />
+          </div>
         </div>
       )
     }
