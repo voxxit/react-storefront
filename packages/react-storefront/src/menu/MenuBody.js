@@ -8,6 +8,7 @@ import MenuList from '@material-ui/core/MenuList'
 import MenuItem from '@material-ui/core/MenuItem'
 import ChevronLeft from '@material-ui/icons/ChevronLeft'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
+import classnames from 'classnames'
 import Item from './Item'
 import MenuContext from './MenuContext'
 
@@ -37,8 +38,17 @@ export default class MenuBody extends Component {
 
     return (
       <div
-        className={isRoot ? '' : classes.hidden}
-        amp-bind={`class=>list == '${id}'  ? '${classes.visible}' : '${classes.hidden}'`}
+        className={classnames(classes.menuBody, {
+          [classes.inFocus]: isRoot,
+          [classes.hiddenRight]: !isRoot
+        })}
+        amp-bind={`class=>list == '${id}'  ? '${classnames(
+          classes.menuBody,
+          classes.inFocus
+        )}' : '${classnames(classes.menuBody, {
+          [classes.hiddenLeft]: isRoot,
+          [classes.hiddenRight]: !isRoot
+        })}'`}
       >
         <MenuList classes={{ padding: classes.list }}>
           {rootHeader}

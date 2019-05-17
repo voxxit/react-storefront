@@ -37,6 +37,27 @@ export const styles = theme => ({
     padding: 0
   },
 
+  menuBody: {
+    left: 0,
+    top: 0,
+    position: 'absolute',
+    width: '100%',
+    flex: '1 1 0%',
+    transition: 'transform ease-out .2s'
+  },
+
+  hiddenLeft: {
+    transform: `translateX(-${theme.drawerWidth}px)`
+  },
+
+  hiddenRight: {
+    transform: `translateX(${theme.drawerWidth}px)`
+  },
+
+  inFocus: {
+    transform: 'translateX(0px)'
+  },
+
   listPadding: {
     padding: 0
   },

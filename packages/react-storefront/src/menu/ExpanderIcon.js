@@ -21,7 +21,8 @@ export default class ExpanderIcon extends Component {
       CollapseIcon,
       theme,
       showExpander,
-      sublist
+      sublist,
+      item
     } = this.props
 
     const { classes } = this.context
