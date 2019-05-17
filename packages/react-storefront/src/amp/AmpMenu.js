@@ -65,6 +65,8 @@ export default class AmpMenu extends Component {
       drawerWidth,
       rootHeader,
       rootFooter,
+      ExpandIcon,
+      CollapseIcon,
       align
     } = this.props
 
@@ -75,6 +77,8 @@ export default class AmpMenu extends Component {
         rootHeader={rootHeader}
         rootFooter={rootFooter}
         drawerWidth={drawerWidth}
+        ExpandIcon={ExpandIcon}
+        CollapseIcon={CollapseIcon}
         root={root}
         depth={0}
         path={[]}
@@ -93,6 +97,8 @@ export default class AmpMenu extends Component {
             rootHeader={rootHeader}
             rootFooter={rootFooter}
             drawerWidth={drawerWidth}
+            ExpandIcon={ExpandIcon}
+            CollapseIcon={CollapseIcon}
             root={node}
             depth={1}
             path={[index]}
